@@ -5,7 +5,7 @@
 \title{Allows the user to define the ecological consequences for species within each site,
 defining thus species survival and abundance}
 \usage{
-apply_ecology(abundance, traits, local_environment, config)
+apply_ecology(abundance, traits, local_environment, config, plasticidade = 0.1)
 }
 \arguments{
 \item{abundance}{a named vector of abundances with one abundance value per species}

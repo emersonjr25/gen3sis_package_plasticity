@@ -113,7 +113,9 @@ run_simulation <- function(config = NA,
   if(!verify_config(config)){
     stop("config verification failed")
   }
-
+  
+  plasticidade <- 0.1
+  
   val <- list("data" = list(),
               "vars" = list(),
               "config" = config)
@@ -199,7 +201,7 @@ run_simulation <- function(config = NA,
     if(verbose>=2){
       cat("speciation \n")
     }
-    val <- loop_speciation(val$config, val$data, val$vars)
+    val <- loop_speciation(val$config, val$data, val$vars, plasticidade)
 
     # updates to take into account new species
     val <- update1.n_sp.all_geo_sp_ti(val$config, val$data, val$vars)

@@ -17,7 +17,7 @@
 #' @return an abundance vector with the new abundance values for every species.
 #' An abundance value of 0 indicates species death, any other values indicates survival.
 #' @export
-apply_ecology <- function(abundance, traits, local_environment, config) {
+apply_ecology <- function(abundance, traits, local_environment, config, plasticidade = 0.1) {
   stop("this function documents the user function interface only, do not use it.")
 }
 
@@ -35,7 +35,7 @@ apply_ecology <- function(abundance, traits, local_environment, config) {
 #'
 #' @return returns the standard val(config, data, vars) list
 #' @noRd
-loop_ecology <- function (config, data, vars, plasticidade) {
+loop_ecology <- function (config, data, vars, plasticidade = 0.1) {
   if (config$gen3sis$general$verbose >= 3) {
     cat(paste("entering ecology module @ time", vars$ti, 
               "\n"))
@@ -72,7 +72,7 @@ loop_ecology <- function (config, data, vars, plasticidade) {
     }
     rownames(traits) <- coo_sp
     names(abundance) <- coo_sp
-    NEW_abd <- config$gen3sis$ecology$apply_ecology(abundance, traits, local_environment, config, plasticidade)
+    NEW_abd <- config$gen3sis$ecology$apply_ecology(abundance, traits, local_environment, config, plasticidade = 0.1)
     names(NEW_abd) <- coo_sp
     shalldie <- NEW_abd == 0
     for (spi in coo_sp) {
